@@ -1,3 +1,5 @@
+import heapq
+
 def depth_first_search(graph, start):
     visited = set()
     stack = [start]
@@ -24,8 +26,46 @@ def floyd_warshall(graph):
             for j in graph:
                 if dist[i][j] > dist[i][k] + dist[k][j]:
                     dist[i][j] = dist[i][k] + dist[k][j]
-
     return dist
+
+def dijkstra(graph, start):
+    # Initialize distances and priority queue
+    distances = {node: float('infinity') for node in graph}
+    distances[start] = 0
+    priority_queue = [(0, start)]  # (distance, node)
+
+    while priority_queue:
+        current_distance, current_node = heapq.heappop(priority_queue)
+
+        # Nodes can only get added once, so skip if we already found a better path
+        if current_distance > distances[current_node]:
+            continue
+
+        # Explore neighbors
+        for neighbor, weight in graph[current_node].items():
+            distance = current_distance + weight
+
+            # Only consider this new path if it's better
+            if distance < distances[neighbor]:
+                distances[neighbor] = distance
+                heapq.heappush(priority_queue, (distance, neighbor))
+
+    return distances
+
+# Example usage
+if __name__ == "__main__":
+    # Define the graph as an adjacency list
+    graph = {
+        'A': {'B': 1, 'C': 4},
+        'B': {'A': 1, 'C': 2, 'D': 5},
+        'C': {'A': 4, 'B': 2, 'D': 1},
+        'D': {'B': 5, 'C': 1}
+    }
+
+    start_node = 'A'
+    distances = dijkstra(graph, start_node)
+    print("Shortest distances from node", start_node, ":", distances)
+
 
 # Example usage:
 # graph = {
