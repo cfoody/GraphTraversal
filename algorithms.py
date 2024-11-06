@@ -61,7 +61,17 @@ if __name__ == "__main__":
         'C': {'A': 4, 'B': 2, 'D': 1},
         'D': {'B': 5, 'C': 1}
     }
-
+    graph2 = {
+        'A': {'B': -4, 'C': 6},
+        'B': {'A': 6, 'C': 2, 'D': 2},
+        'C': {'A': 4, 'B': 12, 'D': -1},
+        'D': {'B': 5, 'C': 21}
+    }
+    graph3 = {
+        'A': {'B': -4, 'C': 6},
+        'B': {'A': 6, 'C': 2},
+        'C': {'A': 6, 'B': 2}
+    }
     start_node = 'A'
     distances = dijkstra(graph, start_node)
     print("Shortest distances from node", start_node, ":", distances)
