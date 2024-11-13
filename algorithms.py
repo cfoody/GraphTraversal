@@ -55,7 +55,7 @@ def dijkstra(graph, start):
 # Example usage
 if __name__ == "__main__":
     # Define the graph as an adjacency list
-graph = {
+    graph = {
         'A': {'B': 1, 'C': 4, 'D': 7, 'E': 9, 'I': 1, 'K': 6},
         'B': {'A': 1, 'C': 2, 'D': 5, 'E': 7, 'K': 7, 'I': 2, 'H': 3},
         'C': {'A': 4, 'B': 2, 'D': 1, 'G': 8, 'E': 5, 'F': 12},
