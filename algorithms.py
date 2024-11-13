@@ -1,16 +1,17 @@
 import heapq
 
-def depth_first_search(graph, start):
-    visited = set()
-    stack = [start]
+def depth_first_search(graph, start, visited=None):
+    if visited is None:
+        visited = set()  # Keep track of visited nodes
 
-    while stack:
-        vertex = stack.pop()
-        if vertex not in visited:
-            visited.add(vertex)
-            stack.extend(set(graph[vertex]) - visited)
-    
-    return visited
+    # Mark the current node as visited
+    visited.add(start)
+    print(start)  # This prints the node (you can modify it to collect nodes or other operations)
+
+    # Recur for all the vertices adjacent to this node
+    for neighbor in graph[start]:
+        if neighbor not in visited:
+            depth_first_search(graph, neighbor, visited)
 
 def floyd_warshall(graph):
     # Initialize distance matrix
