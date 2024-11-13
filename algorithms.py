@@ -6,7 +6,7 @@ def depth_first_search(graph, start, visited=None):
 
     # Mark the current node as visited
     visited.add(start)
-    print(start)  # This prints the node (you can modify it to collect nodes or other operations)
+    print(start + ' ', end = '')  # This prints the node (you can modify it to collect nodes or other operations)
 
     # Recur for all the vertices adjacent to this node
     for neighbor in graph[start]:
@@ -64,6 +64,7 @@ if __name__ == "__main__":
         'F': {'C': 7, 'D': 8, 'G': 2},
         'G': {'E': 9, 'F': 2}
     }
+    
     start_node = 'A'
     distances = dijkstra(graph, start_node)
     dijkstraStr = ""
@@ -75,9 +76,9 @@ if __name__ == "__main__":
     print('floyd')
     for vertex, endpts in floydRet.items():
         print(f"{vertex}:", end='')
-        string = ""
         for key, value in endpts.items():
-            string += "\t" + f"  {key}: {value}"
-        print(string)
-    
+            print("\t" + f"  {key}: {value}",end='')
+        print()
+
+    print()
     depth_first_search(graph, 'A')
