@@ -67,17 +67,12 @@ if __name__ == "__main__":
     start_node = 'A'
     distances = dijkstra(graph, start_node)
     print("Shortest distances from node", start_node, ":", distances)
-    print('floyd', floyd(graph2))
+    floydRet = floyd(graph)
+    print('floyd')
+    for vertex, endpt in floydRet.items():
+        print(f"{vertex}:", end='')
+        string = ""
+        for key, value in endpt.items():
+            string += "\t" + f"  {key}: {value}"
+        print(string)
     print('dfs',  depth_first_search(graph, 'A'))
-
-
-# Example usage:
-# graph = {
-#     'A': ['B', 'C'],
-#     'B': ['A', 'D', 'E'],
-#     'C': ['A', 'F'],
-#     'D': ['B'],
-#     'E': ['B', 'F'],
-#     'F': ['C', 'E']
-# }
-# print(depth_first_search(graph, 'A'))
