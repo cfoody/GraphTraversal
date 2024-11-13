@@ -66,13 +66,18 @@ if __name__ == "__main__":
     }
     start_node = 'A'
     distances = dijkstra(graph, start_node)
-    print("Shortest distances from node", start_node, ":", distances)
+    dijkstraStr = ""
+    for key, value in distances.items():
+        dijkstraStr += "\t" + f"  {key}: {value}"
+    print("Shortest distances from node", start_node, ":", dijkstraStr)
+    
     floydRet = floyd(graph)
     print('floyd')
-    for vertex, endpt in floydRet.items():
+    for vertex, endpts in floydRet.items():
         print(f"{vertex}:", end='')
         string = ""
-        for key, value in endpt.items():
+        for key, value in endpts.items():
             string += "\t" + f"  {key}: {value}"
         print(string)
-    print('dfs',  depth_first_search(graph, 'A'))
+    
+    depth_first_search(graph, 'A')
