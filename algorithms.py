@@ -13,7 +13,7 @@ def depth_first_search(graph, start, visited=None):
         if neighbor not in visited:
             depth_first_search(graph, neighbor, visited)
 
-def floyd_warshall(graph):
+def floyd(graph):
     # Initialize distance matrix
     dist = {u: {v: float('inf') for v in graph} for u in graph}
     for u in graph:
@@ -97,6 +97,8 @@ if __name__ == "__main__":
     start_node = 'A'
     distances = dijkstra(graph, start_node)
     print("Shortest distances from node", start_node, ":", distances)
+    print('floyd', floyd(graph2))
+    print('dfs',  depth_first_search(graph, 'A'))
 
 
 # Example usage:
