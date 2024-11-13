@@ -17,9 +17,8 @@ def floyd_warshall(graph):
     # Initialize distance matrix
     dist = {u: {v: float('inf') for v in graph} for u in graph}
     for u in graph:
-        dist[u][u] = 0
-        for v in graph[u]:
-            dist[u][v] = 1  # Assuming the edge weight is 1
+        for v, weight in graph[u].items():
+            dist[u][v] = weight
 
         # Floyd-Warshall algorithm
     for k in graph:
