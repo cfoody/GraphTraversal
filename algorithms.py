@@ -78,16 +78,16 @@ if __name__ == "__main__":
 
     graph2 = {
         'A': {'B': 6, 'C': 2, 'D': 5},
-        'B': {'A': 6, 'C': 1, 'E': 4, 'F': 3},
-        'C': {'A': 2, 'B': 1, 'D': 3, 'G': 8},
+        'B': {'A': 6, 'C': 1, 'E': 4},
+        'C': {'A': 2, 'B': 1, 'D': 3},
         'D': {'A': 5, 'C': 3, 'E': 7},
-        'E': {'B': 4, 'D': 7, 'F': 9},
+        'E': {'B': 4, 'D': 7},
         'F': {'G': 6},
         'G': {'F': 6}
     }
     
     start_node = 'A'
-    distances = dijkstra(graph, start_node)
+    distances = dijkstra(graph2, start_node)
     dijkstraStr = ""
     for key, value in distances.items():
         dijkstraStr += "\t" + f"  {key}: {value}"
